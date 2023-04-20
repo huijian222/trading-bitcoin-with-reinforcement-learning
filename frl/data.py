@@ -28,11 +28,11 @@ class Data(object):
         """
 
         # Step 1
-        self.data.index = pd.to_datetime(self.data['Timestamp'], unit='s')
+        self.data.index = pd.to_datetime(self.data['Timestamp'], format = '%Y-%m-%d %H:%M:%S')
         self.data = self.data.loc[self.data.index < pd.datetime(2017, 7, 1)]
 
         # Step 2
-        self.data.drop(['Timestamp', 'Volume_(Currency)', 'Weighted_Price'], axis=1, inplace=True)
+        self.data.drop(['Timestamp'], axis=1, inplace=True)
 
         # Step 3
         self.data.rename(columns={'Volume_(BTC)': 'Volume'}, inplace=True)
